@@ -1,1 +1,2 @@
-this the checker for more functions
+this is a readme for more functions and loops
+

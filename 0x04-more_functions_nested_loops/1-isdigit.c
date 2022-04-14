@@ -1,4 +1,4 @@
-/*
+/**
  * _isdigit - checks if input is digit between 0 - 9
  *
  * @c: input

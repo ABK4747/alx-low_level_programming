@@ -1,4 +1,5 @@
 #include"main.h"
+
 /**
  * print_square - print a square using the character #
  *
@@ -6,6 +7,7 @@
  *
  * Return: Always 0 (Success)
  */
+
 void print_square(int size)
 {
 	int row, column;
@@ -16,5 +18,4 @@ void print_square(int size)
 			_putchar('#');
 		_putchar('\n');
 	}
-	return (0);
 }

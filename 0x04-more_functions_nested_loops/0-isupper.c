@@ -1,4 +1,4 @@
-/*
+/**
  * _isupper - check if c is upper
  *
  * @c: input for alphabet

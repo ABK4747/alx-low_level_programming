@@ -19,7 +19,7 @@ void puts2(char *str)
 	{
 		if (str[i] == '\0')
 			break;
-		
+
 		if (i % 2 == 0)
 			_putchar(str[i]);
 	}

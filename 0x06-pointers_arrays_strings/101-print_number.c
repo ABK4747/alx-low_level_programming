@@ -21,7 +21,6 @@ void print_number(int n)
 
 	d = m;
 	count = 1;
-}
 
 for (; count >= 1; count /= 10)
 {

@@ -1,19 +1,30 @@
-#include "main.h"
-#include <stdio.h>
-
 /**
- * main - check the code for ALX School students.
+ * _strpbrk - a function that searches a
+ *           string for any of a set of bytes.
  *
- * Return: Always 0.
+ * @s: pointer to input string
+ * @accept: pointer to string we
+ *         searching for in @s
+ *
+ * Return: pointer to the bytes in @s
+ *         or NULL if no such byte is found
  */
 
-int main(void)
+char *_strpbrk(char *s, char *accept)
 {
-	char *s = "hello, world";
-	char *f = "world";
-	char *t;
+	int i, j;
 
-	t = _strpbrk(s, f);
-	printf("%s\n", t);
-	return (0);
+	i = 0;
+	while (s[i] != '\0')
+	{
+		j = 0;
+		while (accept[j] != '\0')
+		{
+			if (s[i] == accept[j])
+				return (s + i);
+			j++;
+		}
+		i++;
+	}
+	return ('\0');
 }

@@ -2,12 +2,12 @@
 char* _strcpy(char* dest, char* src) {
 	return "Hello";
 }
-int _atoi(char* s) {
+int _strcmp(char *s1, char *s2) {
 	return 0;
 }
-char* _strcat(char* dest, char* src) {
+char *_memset(char *s, char b, unsigned int n) {
 	return "Hello";
 }
-char* _strncat(char* dest, char* src, int n) {
+char *_memcpy(char *dest, char *src, unsigned int n) {
 	return "Hello";
 }

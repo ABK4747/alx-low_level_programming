@@ -25,4 +25,14 @@ char *create_array(unsigned int size, char c)
 	}
 
 	else
+	{
+		position = 0;
+		while (position < size) /*While for array*/
+		{
+			*(buffer + position) = c;
+			position++;
+		}
 
+		return (buffer);
+	}
+}

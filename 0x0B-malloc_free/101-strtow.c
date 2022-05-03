@@ -1,90 +1,85 @@
 #include "main.h"
+#include <stdlib.h>
 
 /**
- * strtow - splits a string into words
- * @str: string of words to be split
- * Return: double pointer to strings
+ * copychars - copies chars to buffer
+ * @b: destination buffer
+ * @start: starting char pointer
+ * @stop: ending char pointer
+ */
+void copychars(char *b, char *start, char *stop)
+{
+	while (start <= stop)
+		*b++ = *start++;
+	*b = 0;
+}
+
+/**
+ * wordcount - counts the number of words
+ * @str: the sentence string
+ *
+ * Return: int number of words
+ */
+int wordcount(char *str)
+{
+	int words = 0, in_word = 0;
+
+	while (1)
+	{
+		if (*str == ' ' || !*str)'
+		{
+			if (in_word)
+				words++;
+			in_word = 0;
+			if (!*str)
+				break;
+		}
+		else
+			in_word++;
+		str++;
+	}
+	return (words);
+}
+
+/**
+ * strtow - splits sentence into words
+ * @str: the sentence string
+ *
+ * Return: pointer to string array
  */
 char **strtow(char *str)
 {
-	char **ptr;
-	int i, k, len, start, end, j = 0;
-	int words = countWords(str);
+	int words = 0, in_word = 0;
+	char **ret, *word_start;
 
-	if (!str || !countWords(str))
+	if (!str || !*str || !wordcount(str))
 		return (NULL);
-	ptr = malloc(sizeof(char *) * (words + 1));
-	if (!ptr)
-		return (NULL);
-	for (i = 0; i < words; i++)
+	ret = malloc(sizeof(char *) * (wordcount(str) + 1));
+	while (1)
 	{
-		start = startIndex(str, j);
-		end = endIndex(str, start);
-		len = end - start;
-		ptr[i] = malloc(sizeof(char) * (len + 1));
-		if (!ptr[i])
+		if (*str == ' ' || !*str)
 		{
-			i -= 1;
-			while (i >= 0)
+			if (in_word)
 			{
-				free(ptr[i]);
-				i--;
+				ret[words] = malloc(sizeof(char) * (in_word + 1));
+				if (!ret[words])
+				{
+					return (NULL);
+				}
+				copychars(ret[words], word_start, str - 1);
+				words++;
+				in_word = 0;
 			}
-			free(ptr);
-			return (NULL);
+			if (!*str)
+				break;
 		}
-		for (k = 0; k < len; k++)
-			ptr[i][k] = str[start++];
-		ptr[i][k++] = '\0';
-		j = end + 1;
-	}
-	ptr[i] = NULL;
-	return (ptr);
-}
-
-/**
- * isSpace - determines if character is a space or not
- * @c: input char
- * Return: 1 if true or 0 or not
- */
-int isSpace(char c)
-{
-	return (c == ' ');
-}
-
-/**
- * endIndex - returns last index of non-space char
- * @s: input string
- * @index: starting index
- * Return: index of last index of non-space char
- */
-int endIndex(char *s, int index)
-{
-	while (!isSpace(*(s + index)))
-		index++;
-	return (index);
-}
-
-/**
- * countWords - counts numbers of words in string
- * @s: input string
- * Return: number of words
- */
-int countWords(char *s)
-{
-	int wordOn = 0;
-	int words = 0;
-
-	while (*s)
-	{
-		if (isSpace(*s) && wordOn)
-			wordOn = 0;
-		else if (!isSpace(*s) && !wordOn)
+		else
 		{
-			wordOn = 1;
-			words++;
+			if (!in_word++)
+				word_start = str;
 		}
-		s++;
+		str++;
 	}
-	return (words);
+	ret[words] = 0;
+	return (ret);
 }

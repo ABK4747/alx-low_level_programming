@@ -1,1 +1,1 @@
-this is the readme for the pointer and their functions
+this is the repo for the function and pointer project

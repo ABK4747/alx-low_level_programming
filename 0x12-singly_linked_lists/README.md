@@ -1,1 +1,2 @@
-reaadme for the singly linked list
+this repo is for the singly listed lists
+

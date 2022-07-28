@@ -1,5 +1,5 @@
-#ifndef HASH_TABLES_H
-#define HASH_TABLES_
+#ifndef HASH_TABES_H
+#define HASH_TABLES_H
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -55,7 +55,7 @@ typedef struct shash_node_s
 	char *value;
 	struct shash_node_s *next;
 	struct shash_node_s *sprev;
-	struct shash_node_s *snext
+	struct shash_node_s *snext;
 } shash_node_t;
 
 /**
